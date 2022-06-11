@@ -23,5 +23,18 @@ module.exports = {
     });
 
     return res.redirect('/post');
+  },
+
+  update: async (req, res) => {
+    await Post.update({
+      title : req.body.title,
+      content : req.body.content
+    }, {
+      where : {
+        id: req.params.id
+      }
+    });
+
+    return res.redirect('/post');
   }
 };
