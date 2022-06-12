@@ -36,5 +36,15 @@ module.exports = {
     });
 
     return res.redirect('/post');
+  },
+
+  delete: async (req, res) => {
+    await Post.destroy({
+        where : {
+          id: req.params.id
+        }
+    });
+
+    return res.redirect('/post');
   }
 };
