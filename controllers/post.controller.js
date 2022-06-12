@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const { post } = require('../routes/index.route');
 
 module.exports = {
   index: async (req, res) => {
@@ -46,5 +47,19 @@ module.exports = {
     });
 
     return res.redirect('/post');
-  }
+  },
+
+  edit: async (req, res) => {
+    const post = await Post.findOne({
+      where: { 
+        id: req.params.id 
+      }
+    });
+    
+    return res.render('post/edit', {
+      post
+    });
+    
+  },
+
 };
